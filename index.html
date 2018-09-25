@@ -9,28 +9,60 @@
     <link rel="stylesheet" href="style.css">
 
     <!-- AR scripts-->
-    <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
-    <script src="https://rawgit.com/jeromeetienne/ar.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://google-ar.github.io/three.ar.js/dist/three.ar.js"></script>
+
+    <!-- <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+    <script src="https://rawgit.com/jeromeetienne/ar.js/master/aframe/build/aframe-ar.js"></script> -->
     <script src="https://3d.io/releases/3dio-js/1.x.x-beta/3dio.min.js"></script>
+    <style>
+      a-scene {
+        height: 600px;
+        width: 600px;
+      }
+      video {
+        z-index: 0;
+      }
+      .a-enter-vr {
+        display: none;
+      }
+      /* main {
+        height: 400px;
+        width: 400px;
+      } */
+    </style>
 
 </head>
+
+
 <body>
+  <a-assets>
+    <video id="webcam"></video>
+  </a-assets>
     <!-- Camera -->
-    <main id="camera">
+    <!-- <main id="camera"> -->
         <!-- Camera sensor -->
-        <canvas id="camera--sensor"></canvas>
+        <!-- <canvas id="camera--sensor"></canvas> -->
         <!-- Camera view -->
-        <video id="camera--view" autoplay playsinline>
-        <a-scene>
-          <a-entity io3d-furniture="id:9a17f541-886e-467e-b740-cf665d74af11" position="0 0 0"></a-entity>
+        <video id="camera--view" autoplay playsinline></video>
+        <a-scene  >
+          <a-video src="#camera--view"></a-video>
+          <!-- <a-assets>
+            <video id="camera--view" autoplay playsinline></video>
+          </a-assets> -->
+
+          <a-box position="-1 0.5 -3" rotation="0 45 0" color="#BEBEBE" shadow ></a-box>
+
+          <a-entity io3d-furniture="id:9a17f541-886e-467e-b740-cf665d74af11" position="0 .5 -2"></a-entity>
+          <!-- <a-video src="#camera--view"></a-video> -->
 
       </a-scene>
-    </video>
+
         <!-- Camera output -->
-        <img src="//:0" alt="" id="camera--output">
+        <!-- <img src="//:0" alt="" id="camera--output"> -->
         <!-- Camera trigger -->
         <button id="camera--trigger">Take a picture</button>
-    </main>
+    <!-- </main> -->
     <!-- Reference to your JavaScript file -->
     <script src="app.js"></script>
 </body>
