@@ -19,9 +19,9 @@
         height: 600px;
         width: 600px;
       }
-      video {
+      /* video {
         z-index: 0;
-      }
+      } */
       .a-enter-vr {
         display: none;
       }
@@ -30,13 +30,13 @@
 
 
 <body>
-  <a-assets>
-    <video id="webcam"></video>
-  </a-assets>
 
         <!-- Camera view -->
         <video id="camera--view" autoplay playsinline></video>
-        <a-scene  >
+        <a-scene embedded >
+          <a-assets>
+            <video id="webcam"></video>
+          </a-assets>
           <a-assets>
             <a-video src="#camera--view"></a-video>
           </a-assets>
@@ -44,6 +44,7 @@
           <a-entity io3d-furniture="id:d8402f88-3595-4c99-8abe-b81d9ca10d4c"  rotation="0 30 0" position="0 .5 -2"></a-entity>
 
       </a-scene>
+      <img src="//:0" alt="" id="camera--output">
 
         <button id="camera--trigger">Take a picture</button>
     <script src="app.js"></script>
